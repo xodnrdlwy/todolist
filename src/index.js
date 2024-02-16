@@ -1,13 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Joinpage} from "./user/Joinpage";
+import {Loginpage} from "./user/Loginpage";
+import {Mypage} from "./component/Mypage";
+import {UserUpdate} from "./component/UserUpdate";
+import {UserDelete} from "./component/UserDelete";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <Router>
+          <Routes>
+            <Route path="/" element={<App />}/>
+            <Route path="/Join" element={<Joinpage/>}/>
+            <Route path="/Login" element={<Loginpage/>}/>
+
+              <Route path="user">
+              <Route path="mypage" element={<Mypage/>}/>
+                  <Route path="update" element={<UserUpdate/>}/>
+                  <Route path="delete" element={<UserDelete/>}/>
+              </Route>
+
+          </Routes>
+      </Router>
   </React.StrictMode>
 );
 
